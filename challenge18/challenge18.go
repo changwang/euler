@@ -14,6 +14,9 @@ const (
 func MaximumPathSum(lines []string) int {
 	previous := make([]int, 0)
 	for _, line := range lines {
+		if len(line) == 0 {
+			continue
+		}
 		current := extractDigits(line)
 		previous = combineLevels(previous, current)
 	}
