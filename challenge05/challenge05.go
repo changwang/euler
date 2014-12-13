@@ -1,9 +1,5 @@
 package challenge05
 
-import (
-	_ "fmt"
-)
-
 func SmallestMultiple(target int) int {
 	factors := make([]int, 0)
 	product := 1

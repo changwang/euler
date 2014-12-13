@@ -1,7 +1,6 @@
 package challenge04
 
 import (
-	_ "fmt"
 	"strconv"
 )
 
@@ -12,7 +11,6 @@ func LargestPalindromicProduct() int32 {
 	for factor1 = 999; factor1 >= 100; factor1-- {
 		for factor2 = factor1; factor2 >= 100; factor2-- {
 			product := factor1 * factor2
-			//fmt.Printf("processing %d - %d\n", factor1, factor2)
 			if isPalindromic(product) {
 				if product > largestProduct {
 					largestProduct = product
@@ -27,7 +25,6 @@ func isPalindromic(num int32) bool {
 	strRepresentation := strconv.Itoa(int(num))
 	reversedStr := reverse(strRepresentation)
 	reversedInt, _ := strconv.Atoi(reversedStr)
-	//fmt.Printf("Original num is %d : reversed num is %d\n", num, reversedInt)
 	return int32(reversedInt) == num
 }
 
