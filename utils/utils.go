@@ -32,3 +32,26 @@ func SliceSum(intSlice []int32) int32 {
 	}
 	return sum
 }
+
+func ProperDivisors(num int32) []int32 {
+	if num == 1 {
+		return []int32{0}
+	}
+
+	stopper := int32(math.Ceil(math.Sqrt(float64(num))))
+	var i int32
+	divisors := make([]int32, 0)
+	divisors = append(divisors, 1)
+
+	for i = 2; i <= stopper; i++ {
+		if num%i == 0 {
+			if !Contains(divisors, i) && i < num {
+				divisors = append(divisors, i)
+			}
+			if !Contains(divisors, num/i) && num/i < num {
+				divisors = append(divisors, num/i)
+			}
+		}
+	}
+	return divisors
+}
