@@ -5,6 +5,10 @@ import (
 )
 
 func IsPrime(num int64) bool {
+	if num < 2 {
+		return false
+	}
+
 	var sqrt, i int64
 	sqrt = int64(math.Sqrt(float64(num)))
 	for i = 2; i <= sqrt; i++ {
