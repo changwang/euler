@@ -1,11 +1,5 @@
 package challenge33
 
-import (
-	"fmt"
-	"strconv"
-	"strings"
-)
-
 type Pair struct {
 	numer int
 	demon int
@@ -22,41 +16,52 @@ func GetAllCancelingPairs() []Pair {
 
 	for i := 10; i < 99; i++ {
 		for j := i + 1; j < 99; j++ {
-			p := simplify(i, j)
-			origPair := Pair{i, j}
-			if p != nullPair && !contains(pairs, p) && isEqual(p, origPair) {
-				pairs = append(pairs, origPair)
+			p := Pair{i, j}
+			if isCancellingPair(i, j) && !contains(pairs, p) {
+				pairs = append(pairs, p)
 			}
 		}
 	}
 	return pairs
 }
 
-func isEqual(sPair, oPair Pair) bool {
-	return float64(sPair.numer)/float64(sPair.demon) == float64(oPair.numer)/float64(oPair.demon)
+func isCancellingPair(numerator, demoninator int) bool {
+	copyNumer := numerator
+	copyDemon := demoninator
+
+	numRem := numerator % 10
+	numerator /= 10
+	if numRem == 0 {
+		return false
+	}
+
+	demRem := demoninator % 10
+	demoninator /= 10
+	if demRem == 0 {
+		return false
+	}
+
+	if isEqual(numRem, demRem, numerator, demoninator, copyNumer, copyDemon) {
+		return true
+	}
+
+	if isEqual(numerator, demRem, numRem, demoninator, copyNumer, copyDemon) {
+		return true
+	}
+
+	if isEqual(numRem, demoninator, numerator, demRem, copyNumer, copyDemon) {
+		return true
+	}
+
+	if isEqual(numerator, demoninator, numRem, demRem, copyNumer, copyDemon) {
+		return true
+	}
+
+	return false
 }
 
-func simplify(numerator, demoninator int) Pair {
-	numerString := fmt.Sprintf("%d", numerator)
-	demonString := fmt.Sprintf("%d", demoninator)
-
-	if string(numerString[1]) == zero && string(demonString[1]) == zero {
-		return nullPair
-	}
-
-	for i, s := range numerString {
-		idx := strings.Index(demonString, string(s))
-		if idx != -1 {
-			subNum := substringToI(numerString, i)
-			subDem := substringToI(demonString, idx)
-			if subNum == 0 || subDem == 0 {
-				return nullPair
-			}
-			return Pair{subNum, subDem}
-		}
-
-	}
-	return nullPair
+func isEqual(smp1, smp2, rem1, rem2, orig1, orig2 int) bool {
+	return smp1 == smp2 && float64(rem1)/float64(rem2) == float64(orig1)/float64(orig2)
 }
 
 func contains(pairs []Pair, p Pair) bool {
@@ -66,14 +71,4 @@ func contains(pairs []Pair, p Pair) bool {
 		}
 	}
 	return false
-}
-
-func substringToI(str string, idx int) int {
-	var subInt int
-	if idx == 0 {
-		subInt, _ = strconv.Atoi(string(str[1]))
-	} else if idx == 1 {
-		subInt, _ = strconv.Atoi(string(str[0]))
-	}
-	return subInt
 }
