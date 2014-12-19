@@ -59,3 +59,17 @@ func ProperDivisors(num int32) []int32 {
 	}
 	return divisors
 }
+
+func Factorial(num int64) float64 {
+	if num == 0 || num == 1 {
+		return 1
+	}
+
+	var factorial float64
+	factorial = 1
+	for num > 1 {
+		factorial *= float64(num)
+		num--
+	}
+	return factorial
+}
