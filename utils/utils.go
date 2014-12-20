@@ -19,9 +19,9 @@ func IsPrime(num int64) bool {
 	return true
 }
 
-func Contains(divisors []int32, div int32) bool {
-	for _, d := range divisors {
-		if div == d {
+func Contains(intSlice []int32, num int32) bool {
+	for _, d := range intSlice {
+		if num == d {
 			return true
 		}
 	}
