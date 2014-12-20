@@ -73,3 +73,28 @@ func Factorial(num int64) float64 {
 	}
 	return factorial
 }
+
+func IsPalindrome(input string) bool {
+	length := len(input)
+	if length == 1 {
+		return true
+	}
+
+	var start, end int
+	if length%2 != 0 {
+		start = length/2 - 1
+		end = length/2 + 1
+	} else {
+		start, end = length/2-1, length/2
+	}
+
+	for start >= 0 && end < length {
+		if input[start] != input[end] {
+			return false
+		}
+		start--
+		end++
+	}
+
+	return true
+}
