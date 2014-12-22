@@ -138,6 +138,10 @@ func IsPandigital(num, span int64) bool {
 
 	for num > 0 {
 		rem := num % 10
+		if rem > span {
+			return false
+		}
+
 		num /= 10
 		found, ok := occurred[rem]
 		if !ok || found {
