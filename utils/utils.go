@@ -4,6 +4,18 @@ import (
 	"math"
 )
 
+var occurred = map[int64]bool{
+	1: false,
+	2: false,
+	3: false,
+	4: false,
+	5: false,
+	6: false,
+	7: false,
+	8: false,
+	9: false,
+}
+
 func IsPrime(num int64) bool {
 	if num < 2 {
 		return false
@@ -115,4 +127,30 @@ func DigitLength(num int64) int {
 		length++
 	}
 	return length
+}
+
+func IsPandigital(num, span int64) bool {
+	length := int64(DigitLength(num))
+	defer resetCheckMap()
+	if length != span {
+		return false
+	}
+
+	for num > 0 {
+		rem := num % 10
+		num /= 10
+		found, ok := occurred[rem]
+		if !ok || found {
+			return false
+		}
+
+		occurred[rem] = true
+	}
+	return true
+}
+
+func resetCheckMap() {
+	for k, _ := range occurred {
+		occurred[k] = false
+	}
 }
