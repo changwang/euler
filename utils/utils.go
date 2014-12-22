@@ -98,3 +98,21 @@ func IsPalindrome(input string) bool {
 
 	return true
 }
+
+func DigitLength(num int64) int {
+	var length int
+
+	if num == 0 {
+		return 1
+	}
+
+	if num < 0 {
+		num -= num
+	}
+
+	for num > 0 {
+		num /= 10
+		length++
+	}
+	return length
+}

@@ -3,7 +3,6 @@ package challenge37
 import (
 	"euler/utils"
 	"math"
-	"strconv"
 )
 
 func GetAllTruncatablePrimes() int64 {
@@ -50,8 +49,7 @@ func shiftToRight(num int64) int64 {
 }
 
 func shiftToLeft(num int64) int64 {
-	numStr := strconv.FormatInt(num, 10)
-	length := len(numStr)
+	length := utils.DigitLength(num)
 	base := int64(math.Pow(10, float64(length-1)))
 	return num - (num/base)*base
 }

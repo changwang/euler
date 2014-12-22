@@ -2,7 +2,6 @@ package challenge35
 
 import (
 	"euler/utils"
-	"fmt"
 	"math"
 )
 
@@ -40,8 +39,7 @@ func circularRotations(num int32) []int32 {
 		return circulars
 	}
 
-	strNum := fmt.Sprintf("%d", num)
-	numLen := len(strNum) - 1
+	numLen := utils.DigitLength(int64(num)) - 1
 
 	factor := int32(math.Pow(10, float64(numLen)))
 
