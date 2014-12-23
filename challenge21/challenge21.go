@@ -4,8 +4,8 @@ import (
 	"euler/utils"
 )
 
-func SumOfAmicableNumbers(target int32) int32 {
-	var sum int32
+func SumOfAmicableNumbers(target int64) int64 {
+	var sum int64
 
 	dMap := divisorMap(target)
 	for k, v := range dMap {
@@ -17,9 +17,9 @@ func SumOfAmicableNumbers(target int32) int32 {
 	return sum
 }
 
-func SumOfAmicableNumbers2(target int32) int32 {
-	var i int32
-	amicableNumbers := make([]int32, 0)
+func SumOfAmicableNumbers2(target int64) int64 {
+	var i int64
+	amicableNumbers := make([]int64, 0)
 
 	for i = 2; i <= target; i++ {
 		divisorsLeft := utils.ProperDivisors(i)
@@ -41,10 +41,10 @@ func SumOfAmicableNumbers2(target int32) int32 {
 	return utils.SliceSum(amicableNumbers)
 }
 
-func divisorMap(target int32) map[int32]int32 {
-	divisorMap := make(map[int32]int32, target)
+func divisorMap(target int64) map[int64]int64 {
+	divisorMap := make(map[int64]int64, target)
 
-	var i int32
+	var i int64
 	for i = 1; i <= target; i++ {
 		divisors := utils.ProperDivisors(i)
 		sum := utils.SliceSum(divisors)

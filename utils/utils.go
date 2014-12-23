@@ -31,7 +31,7 @@ func IsPrime(num int64) bool {
 	return true
 }
 
-func Contains(intSlice []int32, num int32) bool {
+func Contains(intSlice []int64, num int64) bool {
 	for _, d := range intSlice {
 		if num == d {
 			return true
@@ -40,8 +40,8 @@ func Contains(intSlice []int32, num int32) bool {
 	return false
 }
 
-func SliceSum(intSlice []int32) int32 {
-	var sum int32
+func SliceSum(intSlice []int64) int64 {
+	var sum int64
 
 	for _, d := range intSlice {
 		sum += d
@@ -49,14 +49,14 @@ func SliceSum(intSlice []int32) int32 {
 	return sum
 }
 
-func ProperDivisors(num int32) []int32 {
+func ProperDivisors(num int64) []int64 {
 	if num == 1 {
-		return []int32{0}
+		return []int64{0}
 	}
 
-	stopper := int32(math.Ceil(math.Sqrt(float64(num))))
-	var i int32
-	divisors := make([]int32, 0)
+	stopper := int64(math.Ceil(math.Sqrt(float64(num))))
+	var i int64
+	divisors := make([]int64, 0)
 	divisors = append(divisors, 1)
 
 	for i = 2; i <= stopper; i++ {

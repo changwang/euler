@@ -30,7 +30,7 @@ func TestIsPrime(t *testing.T) {
 }
 
 func TestContains(t *testing.T) {
-	container := make([]int32, 1)
+	container := make([]int64, 1)
 	container[0] = 11
 
 	if !Contains(container, 11) {
@@ -41,7 +41,7 @@ func TestContains(t *testing.T) {
 		t.Error("Expect container does not contain 10")
 	}
 
-	var i int32
+	var i int64
 	for i = 1; i < 100; i++ {
 		container = append(container, i)
 		if !Contains(container, i) {
@@ -51,8 +51,8 @@ func TestContains(t *testing.T) {
 }
 
 func TestSliceSum(t *testing.T) {
-	var i int32
-	intSlice := make([]int32, 0)
+	var i int64
+	intSlice := make([]int64, 0)
 	for i = 1; i < 11; i++ {
 		intSlice = append(intSlice, i)
 	}

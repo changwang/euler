@@ -5,12 +5,12 @@ import (
 	"math"
 )
 
-func GetAllCircularPrimes() []int32 {
-	circularsPrimes := make([]int32, 0)
-	var i int32
+func GetAllCircularPrimes() []int64 {
+	circularsPrimes := make([]int64, 0)
+	var i int64
 
 	for i = 2; i < 1000000; i++ {
-		if !utils.IsPrime(int64(i)) {
+		if !utils.IsPrime(i) {
 			continue
 		}
 
@@ -31,8 +31,8 @@ func GetAllCircularPrimes() []int32 {
 	return circularsPrimes
 }
 
-func circularRotations(num int32) []int32 {
-	circulars := make([]int32, 0)
+func circularRotations(num int64) []int64 {
+	circulars := make([]int64, 0)
 	circulars = append(circulars, num)
 
 	if num < 10 {
@@ -41,7 +41,7 @@ func circularRotations(num int32) []int32 {
 
 	numLen := utils.DigitLength(int64(num)) - 1
 
-	factor := int32(math.Pow(10, float64(numLen)))
+	factor := int64(math.Pow(10, float64(numLen)))
 
 	for ; numLen > 0; numLen-- {
 		rem := num % 10

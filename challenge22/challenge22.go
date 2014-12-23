@@ -25,20 +25,3 @@ func nameScore(name string) float64 {
 	}
 	return score
 }
-
-/*
-func main() {
-	resp, _ := http.Get("https://projecteuler.net/project/resources/p022_names.txt")
-	bodyBytes, _ := ioutil.ReadAll(resp.Body)
-	body := string(bodyBytes)
-	names := strings.Split(body, ",")
-
-	for i, name := range names {
-		names[i] = strings.Replace(name, "\"", "", 2)
-	}
-
-	result := challenge22.NameScores(names)
-
-	fmt.Printf("total score is %.f\n", result)
-}
-*/

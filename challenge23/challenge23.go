@@ -6,8 +6,8 @@ import (
 
 func SumOfNonAbundantNumbers() float64 {
 	var sum float64
-	var i int32
-	abundant := make([]int32, 0)
+	var i int64
+	abundant := make([]int64, 0)
 
 	for i = 1; i < 28125; i++ {
 		divisors := utils.ProperDivisors(i)
@@ -23,8 +23,8 @@ func SumOfNonAbundantNumbers() float64 {
 	return sum
 }
 
-func isSumOfAbundantNumbers(number int32, abundants []int32) bool {
-	var i int32
+func isSumOfAbundantNumbers(number int64, abundants []int64) bool {
+	var i int64
 
 	for i = 1; i <= number/2; i++ {
 		if utils.Contains(abundants, i) && utils.Contains(abundants, (number-i)) {
