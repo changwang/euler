@@ -1,7 +1,10 @@
 package utils
 
 import (
+	"bytes"
+	"errors"
 	"math"
+	"strconv"
 )
 
 var occurred = map[int64]bool{
@@ -127,6 +130,62 @@ func DigitLength(num int64) int {
 		length++
 	}
 	return length
+}
+
+func CreatePandigitals(span int64) []int64 {
+	var i int64
+
+	digitSlice := make([]string, 0)
+	for i = 1; i <= span; i++ {
+		ds := strconv.FormatInt(i, 10)
+		digitSlice = append(digitSlice, ds)
+	}
+	digits, err := createPandigits(digitSlice, span)
+	if err != nil {
+		return nil
+	}
+	return digits
+}
+
+func createPandigits(digits []string, span int64) ([]int64, error) {
+	if int64(len(digits)) != span {
+		return nil, errors.New("number of digits mismatches span")
+	}
+
+	pandigits := make([]int64, 0)
+	if span == 1 {
+		digit, err := strconv.ParseInt(digits[0], 10, 64)
+		if err != nil {
+			return nil, err
+		}
+		pandigits = append(pandigits, digit)
+		return pandigits, nil
+	}
+
+	for i := 0; i < len(digits); i++ {
+		head := digits[i]
+		rest := make([]string, len(digits))
+		copy(rest, digits)
+		rest = append(rest[:i], rest[i+1:]...)
+		restdigits, err := createPandigits(rest, int64(len(rest)))
+		if err != nil {
+			return nil, err
+		}
+
+		for _, digit := range restdigits {
+			var buffer bytes.Buffer
+			buffer.Write([]byte(head))
+			ds := strconv.FormatInt(digit, 10)
+			buffer.Write([]byte(ds))
+			permu, err := strconv.ParseInt(buffer.String(), 10, 64)
+			if err != nil {
+				return nil, err
+			}
+			pandigits = append(pandigits, permu)
+		}
+	}
+
+	return pandigits, nil
 }
 
 func IsPandigital(num, span int64) bool {

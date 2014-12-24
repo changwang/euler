@@ -126,7 +126,49 @@ func TestDigitLength(t *testing.T) {
 	}
 }
 
-func TestPandigital(t *testing.T) {
+func TestCreatePandigital(t *testing.T) {
+	digits := CreatePandigitals(4)
+	if digits == nil {
+		t.Error("Expect pandigits not to be nil")
+	}
+
+	if int64(len(digits)) != int64(Factorial(4)) {
+		t.Errorf("Expect %d permutations, but got %d\n", int64(Factorial(4)), len(digits))
+	}
+}
+
+func TestInternalCreatePandigital(t *testing.T) {
+	digitSlice := make([]string, 0)
+	digitSlice = append(digitSlice, "1")
+	digitSlice = append(digitSlice, "2")
+	digitSlice = append(digitSlice, "3")
+	digitSlice = append(digitSlice, "4")
+	digitSlice = append(digitSlice, "5")
+
+	digits, err := createPandigits(digitSlice, int64(len(digitSlice)))
+	if err != nil {
+		t.Fatal("Expect no error occurred")
+	}
+
+	digitsLen := len(digits)
+	permuLen := int64(Factorial(int64(len(digitSlice))))
+	if int64(digitsLen) != permuLen {
+		t.Errorf("Expect %d permutations, but got %d\n", permuLen, digitsLen)
+	}
+
+	for _, d := range digits {
+		if !IsPandigital(d, int64(len(digitSlice))) {
+			t.Errorf("Expect %d to be pandigit\n", d)
+		}
+	}
+
+	digits, err = createPandigits(digitSlice, 2)
+	if err == nil {
+		t.Fatal("Expect error occurred")
+	}
+}
+
+func TestIsPandigital(t *testing.T) {
 	var num int64
 	num = 12345
 	numLen := int64(DigitLength(num))
