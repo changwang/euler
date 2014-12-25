@@ -6,7 +6,7 @@ import (
 )
 
 func GetAllCircularPrimes() []int64 {
-	circularsPrimes := make([]int64, 0)
+	var circularsPrimes []int64
 	var i int64
 
 	for i = 2; i < 1000000; i++ {
@@ -32,7 +32,7 @@ func GetAllCircularPrimes() []int64 {
 }
 
 func circularRotations(num int64) []int64 {
-	circulars := make([]int64, 0)
+	var circulars []int64
 	circulars = append(circulars, num)
 
 	if num < 10 {

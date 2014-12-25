@@ -19,7 +19,7 @@ func (tri *Triangle) String() string {
 }
 
 func getAllRightAngleTrianglesWith(perimeter int64) []Triangle {
-	triangles := make([]Triangle, 0)
+	var triangles []Triangle
 	var i, j int64
 
 	for i = 1; i < perimeter-2; i++ {

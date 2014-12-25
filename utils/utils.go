@@ -20,7 +20,7 @@ var occurred = map[int64]bool{
 }
 
 const (
-	MIN_STR_VALUE = 64
+	MinCharValue = 64
 )
 
 func IsPrime(num int64) bool {
@@ -63,7 +63,7 @@ func ProperDivisors(num int64) []int64 {
 
 	stopper := int64(math.Ceil(math.Sqrt(float64(num))))
 	var i int64
-	divisors := make([]int64, 0)
+	var divisors []int64
 	divisors = append(divisors, 1)
 
 	for i = 2; i <= stopper; i++ {
@@ -139,7 +139,7 @@ func DigitLength(num int64) int {
 func CreatePandigitals(span int64) []int64 {
 	var i int64
 
-	digitSlice := make([]string, 0)
+	var digitSlice []string
 	for i = 1; i <= span; i++ {
 		ds := strconv.FormatInt(i, 10)
 		digitSlice = append(digitSlice, ds)
@@ -156,7 +156,7 @@ func createPandigits(digits []string, span int64) ([]int64, error) {
 		return nil, errors.New("number of digits mismatches span")
 	}
 
-	pandigits := make([]int64, 0)
+	var pandigits []int64
 	if span == 1 {
 		digit, err := strconv.ParseInt(digits[0], 10, 64)
 		if err != nil {
@@ -217,7 +217,7 @@ func IsPandigital(num, span int64) bool {
 }
 
 func resetCheckMap() {
-	for k, _ := range occurred {
+	for k := range occurred {
 		occurred[k] = false
 	}
 }
@@ -225,7 +225,7 @@ func resetCheckMap() {
 func StringScore(input string) int64 {
 	var score int64
 	for _, c := range input {
-		score += int64(c - MIN_STR_VALUE)
+		score += int64(c - MinCharValue)
 	}
 	return score
 }

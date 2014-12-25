@@ -52,7 +52,7 @@ func TestContains(t *testing.T) {
 
 func TestSliceSum(t *testing.T) {
 	var i int64
-	intSlice := make([]int64, 0)
+	var intSlice []int64
 	for i = 1; i < 11; i++ {
 		intSlice = append(intSlice, i)
 	}
@@ -138,7 +138,7 @@ func TestCreatePandigital(t *testing.T) {
 }
 
 func TestInternalCreatePandigital(t *testing.T) {
-	digitSlice := make([]string, 0)
+	var digitSlice []string
 	digitSlice = append(digitSlice, "1")
 	digitSlice = append(digitSlice, "2")
 	digitSlice = append(digitSlice, "3")

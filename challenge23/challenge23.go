@@ -7,16 +7,16 @@ import (
 func SumOfNonAbundantNumbers() float64 {
 	var sum float64
 	var i int64
-	abundant := make([]int64, 0)
+	var abundants []int64
 
 	for i = 1; i < 28125; i++ {
 		divisors := utils.ProperDivisors(i)
 		result := utils.SliceSum(divisors)
-		if i < result && !utils.Contains(abundant, i) {
-			abundant = append(abundant, i)
+		if i < result && !utils.Contains(abundants, i) {
+			abundants = append(abundants, i)
 		}
 
-		if !isSumOfAbundantNumbers(i, abundant) {
+		if !isSumOfAbundantNumbers(i, abundants) {
 			sum += float64(i)
 		}
 	}

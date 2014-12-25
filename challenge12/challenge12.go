@@ -42,7 +42,7 @@ func getFactorSlice(num int) []int {
 
 func getKeySlice(factorMap map[int]int) sort.IntSlice {
 	var keys sort.IntSlice
-	for k, _ := range factorMap {
+	for k := range factorMap {
 		keys = append(keys, k)
 	}
 	sort.Sort(keys)

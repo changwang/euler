@@ -14,7 +14,7 @@ func LongestCollatzSequence(target int64) (int64, int64) {
 }
 
 func collatzSequence(num int64) int64 {
-	sequence := make([]int64, 0)
+	var sequence []int64
 	sequence = append(sequence, num)
 	for num != 1 {
 		if num%2 == 0 {

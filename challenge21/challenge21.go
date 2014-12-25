@@ -19,7 +19,7 @@ func SumOfAmicableNumbers(target int64) int64 {
 
 func SumOfAmicableNumbers2(target int64) int64 {
 	var i int64
-	amicableNumbers := make([]int64, 0)
+	var amicableNumbers []int64
 
 	for i = 2; i <= target; i++ {
 		divisorsLeft := utils.ProperDivisors(i)

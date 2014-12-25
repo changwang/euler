@@ -12,7 +12,7 @@ const (
 var nullPair = Pair{0, 0}
 
 func GetAllCancelingPairs() []Pair {
-	pairs := make([]Pair, 0)
+	var pairs []Pair
 
 	for i := 10; i < 99; i++ {
 		for j := i + 1; j < 99; j++ {

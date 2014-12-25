@@ -12,7 +12,7 @@ const (
 )
 
 func MaximumPathSum(lines []string) int {
-	previous := make([]int, 0)
+	var previous []int
 	for _, line := range lines {
 		if len(line) == 0 {
 			continue
@@ -50,9 +50,8 @@ func combineLevels(previous, current []int) []int {
 	if len(previous) == 0 || len(current) == 0 {
 		if len(previous) == 0 {
 			return current[:]
-		} else {
-			return previous[:]
 		}
+		return previous[:]
 	}
 
 	newCurrent := make([]int, len(current))

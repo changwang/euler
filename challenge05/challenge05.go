@@ -1,7 +1,7 @@
 package challenge05
 
 func SmallestMultiple(target int) int {
-	factors := make([]int, 0)
+	var factors []int
 	product := 1
 
 	for i := 1; i <= target; i++ {

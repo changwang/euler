@@ -6,7 +6,7 @@ import (
 )
 
 func GetAllPalindromes(target int64) []int64 {
-	palindromes := make([]int64, 0)
+	var palindromes []int64
 	var i int64
 
 	for i = 1; i < target; i++ {

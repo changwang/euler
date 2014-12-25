@@ -14,7 +14,7 @@ const (
 )
 
 func GetAllDigitFactorials() []int64 {
-	all := make([]int64, 0)
+	var all []int64
 	for i := 3; i < 100000; i++ {
 		str, ok := IsDigitFactorial(int64(i))
 		if ok {

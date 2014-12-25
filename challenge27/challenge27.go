@@ -7,7 +7,7 @@ import (
 func QuadraticCoefficient(target int) float64 {
 	var maxNOP int64
 	var productOfCoeff float64
-	primes := make([]int64, 0)
+	var primes []int64
 	primes = append(primes, 1)
 
 	for i := 0; i < target; i++ {

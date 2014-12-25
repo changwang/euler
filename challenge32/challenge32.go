@@ -20,7 +20,7 @@ func FindAllPandigitalProducts() int64 {
 		}
 	}
 
-	for k, _ := range found {
+	for k := range found {
 		sum += k
 	}
 	return sum

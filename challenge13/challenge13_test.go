@@ -6,7 +6,7 @@ import (
 )
 
 func TestLargeSum(t *testing.T) {
-	digits := make([]float64, 0)
+	var digits []float64
 
 	digits = append(digits, 37107287533902102798797998220837590246510135740250)
 	digits = append(digits, 46376937677490009712648124896970078050417018260538)

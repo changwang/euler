@@ -8,7 +8,7 @@ func Multi3X5(max int32) int64 {
 		if hasFactor3(num) || hasFactor5(num) {
 			result += int64(num)
 		}
-		num += 1
+		num++
 	}
 	return result
 }
