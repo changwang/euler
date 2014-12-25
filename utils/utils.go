@@ -19,6 +19,10 @@ var occurred = map[int64]bool{
 	9: false,
 }
 
+const (
+	MIN_STR_VALUE = 64
+)
+
 func IsPrime(num int64) bool {
 	if num < 2 {
 		return false
@@ -216,4 +220,12 @@ func resetCheckMap() {
 	for k, _ := range occurred {
 		occurred[k] = false
 	}
+}
+
+func StringScore(input string) int64 {
+	var score int64
+	for _, c := range input {
+		score += int64(c - MIN_STR_VALUE)
+	}
+	return score
 }

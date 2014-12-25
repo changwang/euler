@@ -203,3 +203,10 @@ func TestIsPandigital(t *testing.T) {
 		t.Errorf("Expect %d is not pandigit\n", num)
 	}
 }
+
+func TestStringScore(t *testing.T) {
+	score := StringScore("COLIN")
+	if score != 53 {
+		t.Error("Expect score to be 53", score)
+	}
+}

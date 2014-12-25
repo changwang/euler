@@ -22,10 +22,3 @@ func TestNameScores(t *testing.T) {
 		t.Error("Expect name scores to be 871198282", scores)
 	}
 }
-
-func TestNameScore(t *testing.T) {
-	score := nameScore("COLIN")
-	if score != 53 {
-		t.Error("Expect score to be 53", score)
-	}
-}
