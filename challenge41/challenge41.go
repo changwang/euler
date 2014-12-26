@@ -8,7 +8,7 @@ func GetMaxPandigitalPrime() int64 {
 		then starting from 7 should be fine.
 	*/
 	var max int64
-	digits := utils.CreatePandigitals(7)
+	digits := utils.CreatePandigitals(1, 7)
 	for _, d := range digits {
 		if utils.IsPrime(d) {
 			max = d

@@ -127,7 +127,7 @@ func TestDigitLength(t *testing.T) {
 }
 
 func TestCreatePandigital(t *testing.T) {
-	digits := CreatePandigitals(4)
+	digits := CreatePandigitals(1, 4)
 	if digits == nil {
 		t.Error("Expect pandigits not to be nil")
 	}

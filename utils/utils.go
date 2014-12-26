@@ -136,11 +136,15 @@ func DigitLength(num int64) int {
 	return length
 }
 
-func CreatePandigitals(span int64) []int64 {
+func CreatePandigitals(start, span int64) []int64 {
+	if start+span > 10 {
+		return nil
+	}
+
 	var i int64
 
 	var digitSlice []string
-	for i = 1; i <= span; i++ {
+	for i = start; i < (start + span); i++ {
 		ds := strconv.FormatInt(i, 10)
 		digitSlice = append(digitSlice, ds)
 	}
