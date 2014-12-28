@@ -233,3 +233,42 @@ func StringScore(input string) int64 {
 	}
 	return score
 }
+
+func IsTriangleNumber(num int64) bool {
+	num *= 2
+	left := int64(math.Floor(math.Sqrt(float64(num))))
+	right := left + 1
+	//fmt.Printf("%d %d\n", left, right)
+	return num == (left * right)
+}
+
+func IsPentagonalNumber(num int64) bool {
+	start := int64(math.Floor(math.Sqrt(float64(num * 2 / 3))))
+	end := int64(math.Floor(math.Sqrt(float64(num))))
+
+	var i int64
+	for i = start; i <= end; i++ {
+		left := i
+		right := 3*left - 1
+		if (left * right) == (num * 2) {
+			//fmt.Printf("%d %d\n", left, right)
+			return true
+		}
+	}
+	return false
+}
+
+func IsHexagonalNumber(num int64) bool {
+	start := int64(math.Floor(math.Sqrt(float64(num / 2))))
+	end := int64(math.Floor(math.Sqrt(float64(num))))
+	var i int64
+	for i = start; i <= end; i++ {
+		left := i
+		right := 2*left - 1
+		if (left * right) == num {
+			//fmt.Printf("%d %d\n", left, right)
+			return true
+		}
+	}
+	return false
+}

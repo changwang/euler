@@ -210,3 +210,42 @@ func TestStringScore(t *testing.T) {
 		t.Error("Expect score to be 53", score)
 	}
 }
+
+func TestIsTriangleNum(t *testing.T) {
+	var num int64
+	num = 6
+	if !IsTriangleNumber(num) {
+		t.Error("Expect 6 to be triangle number")
+	}
+
+	num = 40755
+	if !IsTriangleNumber(num) {
+		t.Error("Expect 40755 to be triangle number")
+	}
+}
+
+func TestIsPentagonalNumber(t *testing.T) {
+	var num int64
+	num = 5
+	if !IsPentagonalNumber(num) {
+		t.Error("Expect 5 to be pentagonal number")
+	}
+
+	num = 40755
+	if !IsPentagonalNumber(num) {
+		t.Error("Expect 40755 to be pentagonal number")
+	}
+}
+
+func TestIsHexagonalNumber(t *testing.T) {
+	var num int64
+	num = 6
+	if !IsHexagonalNumber(num) {
+		t.Error("Expect 6 to be hexagonal number")
+	}
+
+	num = 40755
+	if !IsHexagonalNumber(num) {
+		t.Error("Expect 40755 to be hexagonal number")
+	}
+}
